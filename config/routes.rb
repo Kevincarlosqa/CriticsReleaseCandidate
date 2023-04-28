@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root "games#index"
   resources :involved_companies
   resources :genres
   resources :platforms

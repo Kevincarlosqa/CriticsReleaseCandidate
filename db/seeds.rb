@@ -22,6 +22,7 @@ Game.destroy_all
 puts "Seeding companies"
 companies_data.each do |company_data|
   new_company = Company.new(company_data)
+  new_company.cover.attach(io: File.open('db/imgs/sony.png'), filename: 'sony.png')
   puts "Company not created. Errors: #{new_company.errors.full_messages}" unless new_company.save
 end
 
@@ -44,6 +45,7 @@ main_games_data = games_data.select {|game| game["parent"].nil? }
 main_games_data.each do |game|
   game_data = game.slice("name", "summary", "release_date", "category", "rating")
   new_game = Game.new(game_data)
+  new_game.image.attach(io: File.open('db/imgs/nintendo.png'), filename: 'nintendo.png')
   puts "Game not created. Errors: #{new_game.errors.full_messages}" unless new_game.save
 
   game["genres"].each do |genre_name|

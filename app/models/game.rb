@@ -1,4 +1,5 @@
 class Game < ApplicationRecord
+  has_one_attached :image
   belongs_to :parent, class_name: "Game", optional: true
   has_many :involved_companies, dependent: :destroy
   has_many :companies, through: :involved_companies

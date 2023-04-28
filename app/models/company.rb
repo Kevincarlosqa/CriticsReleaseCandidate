@@ -1,4 +1,5 @@
 class Company < ApplicationRecord
+  has_one_attached :cover
   has_many :involved_companies, dependent: :destroy
   has_many :games, through: :involved_companies
 
