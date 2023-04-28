@@ -8,3 +8,16 @@
 
   <%= button_to "Destroy this company", @company, method: :delete %>
 </div>
+
+<div>
+   <%if @company.critics%>
+   <%@company.critics.each do |critic|%>
+   <%= critic.title %></p>
+   by <%= critic.user.username %></p>
+   <%= critic.body %></p>
+   <%# <% reference_time = Time.zone.now - 10.day %>
+   <% timestamp = critic.created_at%>
+   Send <%= time_ago_in_words(timestamp) %> ago</p>
+   <%end%>
+   <%end%>
+</div>
