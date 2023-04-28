@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @critic %>
+
+<div>
+  <%= link_to "Edit this critic", edit_critic_path(@critic) %> |
+  <%= link_to "Back to critics", critics_path %>
+
+  <%= button_to "Destroy this critic", @critic, method: :delete %>
+</div>
