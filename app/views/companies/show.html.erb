@@ -9,6 +9,20 @@
   <%= button_to "Destroy this company", @company, method: :delete %>
 </div>
 
+<%= form_with(url: critic_path, method:"post") do |form| %>
+  <div>
+    <%= form.text_field :company_id, placeholder: "Critic title" %>
+  </div>
+
+  <div>
+    <%= form.text_field :company_id, placeholder: "Critic body" %>
+  </div>
+
+   <div>
+    <%= form.submit "Create critic" %>
+  </div>
+<%end%>
+
 <div>
    <%if @company.critics%>
    <%@company.critics.each do |critic|%>
