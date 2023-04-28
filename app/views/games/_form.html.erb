@@ -43,6 +43,12 @@
   </div>
 
   <div>
+  <%if game.image.attached?%>
+  <%= image_tag game.image %>
+   <%end%>
+  </div>
+
+  <div>
   <%= form.label :cover %>
   <br>
   <%= form.file_field :image, accept: 'image/png,image/jpeg'%>
