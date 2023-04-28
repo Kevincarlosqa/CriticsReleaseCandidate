@@ -1,10 +1,58 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @game %>
+<div>
+  <%if @game.image.attached?%>
+  <div>
+     <%= image_tag @game.image%>
+  </div>
+  <%end%>
+</div>
+<h3><%= @game.name %></h3>
+<div>
+   <%if @game.release_date%>
+   <div>
+      <%= @game.release_date.year %>
+   </div>
+   <%end%>
+</div>
+<p><%= @game.rating %></p>
+<p><%= @game.summary %></p>
+<div>
+   <%if @game.genres%>
+   <div>
+      <p>Genres:<% @game.genres.each do |genre| %>
+      <div>
+       <%= genre.name %></p>
+       </div>
+      <%end%>
+   </div>
+   <%end%>
+</div>
+<div>
+   <%if @game.platforms%>
+   <div>
+      <p>Platforms:<% @game.platforms.each do |platform| %>
+      <div>
+       <%= platform.name %></p>
+       </div>
+      <%end%>
+   </div>
+   <%end%>
+</div>
+<div>
+   <%if @game.companies%>
+   <div>
+      <p>Developers:<% @game.companies.each do |company| %>
+      <div>
+       <%= company.name %></p>
+       </div>
+      <%end%>
+   </div>
+   <%end%>
+</div>
+<h2>Add relations</h2>
+
 
 <div>
-  <%= link_to "Edit this game", edit_game_path(@game) %> |
-  <%= link_to "Back to games", games_path %>
-
-  <%= button_to "Destroy this game", @game, method: :delete %>
+  <%= link_to "Back", games_path %>
 </div>

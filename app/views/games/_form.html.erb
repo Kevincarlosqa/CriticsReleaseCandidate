@@ -27,19 +27,31 @@
   </div>
 
   <div>
-    <%= form.label :category, style: "display: block" %>
-    <%= form.number_field :category %>
-  </div>
-
-  <div>
     <%= form.label :rating, style: "display: block" %>
     <%= form.text_field :rating %>
   </div>
 
   <div>
+    <%= form.label :category, style: "display: block" %>
+    <%= form.text_field :category %>
+  </div>
+
+
+  <div>
     <%= form.label :parent_id, style: "display: block" %>
     <%= form.text_field :parent_id %>
   </div>
+
+  <div>
+  <%= form.label :cover %>
+  <br>
+  <%= form.file_field :image, accept: 'image/png,image/jpeg'%>
+  <% game.errors.full_messages_for(:image).each do |message|%>
+  <span>
+  <%= message%>
+  </span>
+  <%end%>
+</div>
 
   <div>
     <%= form.submit %>

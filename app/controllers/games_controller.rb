@@ -8,6 +8,7 @@ class GamesController < ApplicationController
 
   # GET /games/1
   def show
+    @game = Game.find(params[:id])
   end
 
   # GET /games/new
@@ -53,6 +54,6 @@ class GamesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def game_params
-      params.require(:game).permit(:name, :summary, :release_date, :category, :rating, :parent_id)
+      params.require(:game).permit(:name, :summary, :release_date, :category, :rating, :parent_id, :image)
     end
 end

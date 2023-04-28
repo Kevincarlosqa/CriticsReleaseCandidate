@@ -1,14 +1,30 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>Games</h1>
-
+ <%= link_to 'New game', new_game_path %>
 <div id="games">
   <% @games.each do |game| %>
-    <%= render game %>
-    <p>
-      <%= link_to "Show this game", game %>
-    </p>
-  <% end %>
+          <div>
+            <div>
+               <%if game.image.attached?%>
+               <div>
+                  <%= image_tag game.image%>
+               </div>
+               <%end%>
+            </div>
+            <h3><%= game.name %></h3>
+            <div>
+               <%if game.release_date%>
+               <div>
+                  <%= game.release_date.year %>
+               </div>
+               <%end%>
+            </div>
+            <p><%= game.rating %></p>
+            <p><%= game.summary %></p>
+            <%= link_to 'Show', game %>
+            <%= link_to 'Edit', edit_game_path(game) %>
+            <%= link_to 'Destroy', game, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+          </div>
+        <% end %>
 </div>
-
-<%= link_to "New game", new_game_path %>
