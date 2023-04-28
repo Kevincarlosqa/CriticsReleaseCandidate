@@ -114,7 +114,7 @@ company_2 = Company.last
 user_1 = User.create(username: "user1", email: "user1@mail.com")
 user_2 = User.create(username: "user2", email: "user2@mail.com")
 
-Critic.create(title: "critic 1", body: "this is the first company critic", user: user_1, criticable: company)
-Critic.create(title: "critic 10", body: "this is the tenth critic", user: user_1, criticable: game)
-Critic.create(title: "critic 1", body: "this is the second company critic", user: user_1, criticable: company_2)
-Critic.create(title: "critic 20", body: "this is the twentieth critic", user: user_1, criticable: game_2)
+Critic.create(title: "critic 1", body: "this is the first company critic", user_id: user_1, criticable: company)
+Critic.create(title: "critic 10", body: "this is the tenth critic", user_id: user_1, criticable: game)
+Critic.create(title: "critic 1", body: "this is the second company critic", user_id: user_2, criticable: company_2)
+Critic.create(title: "critic 20", body: "this is the twentieth critic", user_id: user_2, criticable: game_2)

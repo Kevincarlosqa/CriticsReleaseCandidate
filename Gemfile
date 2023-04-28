@@ -68,3 +68,4 @@ group :development do
   # gem "spring"
 end
 gem 'pry', '~> 0.13.1'
+gem "devise"
