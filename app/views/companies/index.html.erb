@@ -1,14 +1,32 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>Companies</h1>
-
-<div id="companies">
+ <%= link_to 'New Company', new_company_path %>
+<div id="games">
   <% @companies.each do |company| %>
-    <%= render company %>
-    <p>
-      <%= link_to "Show this company", company %>
-    </p>
-  <% end %>
-</div>
+          <div>
+            <div>
+               <%if company.cover.attached?%>
+               <div>
+                  <%= image_tag company.cover%>
+               </div>
+               <%end%>
+            </div>
+            <h3><%= company.name %></h3>
+            <div>
+               <%if company.start_date %>
+               <div>
+                  <%= company.start_date.year %>
+               </div>
+               <%end%>
+               <%= company.country %>
 
-<%= link_to "New company", new_company_path %>
+            </div>
+            <p><%= company.description %></p>
+            <p><%= company.games.size %></p>
+            <%= link_to 'Show', company %>
+            <%= link_to 'Edit', edit_company_path(company) %>
+            <%= link_to 'Destroy', company, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+          </div>
+        <% end %>
+</div>
