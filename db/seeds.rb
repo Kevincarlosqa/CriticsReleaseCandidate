@@ -18,6 +18,13 @@ Company.destroy_all
 Platform.destroy_all
 Genre.destroy_all
 Game.destroy_all
+User.destroy_all
+
+ActiveRecord::Base.connection.reset_pk_sequence!('companies')
+ActiveRecord::Base.connection.reset_pk_sequence!('genres')
+ActiveRecord::Base.connection.reset_pk_sequence!('platforms')
+ActiveRecord::Base.connection.reset_pk_sequence!('games')
+ActiveRecord::Base.connection.reset_pk_sequence!('users')
 
 puts "Seeding companies"
 companies_data.each do |company_data|
@@ -98,3 +105,16 @@ expansions_games_data.each do |game|
     puts "Involved Company not created. Errors: #{new_involved_company.errors.full_messages}" unless new_involved_company.save
   end
 end
+
+company = Company.first
+game = Game.first
+game_2 = Game.last
+company_2 = Company.last
+
+user_1 = User.create(username: "user1", email: "user1@mail.com")
+user_2 = User.create(username: "user2", email: "user2@mail.com")
+
+Critic.create(title: "critic 1", body: "this is the first company critic", user: user_1, criticable: company)
+Critic.create(title: "critic 10", body: "this is the tenth critic", user: user_1, criticable: game)
+Critic.create(title: "critic 1", body: "this is the second company critic", user: user_1, criticable: company_2)
+Critic.create(title: "critic 20", body: "this is the twentieth critic", user: user_1, criticable: game_2)
