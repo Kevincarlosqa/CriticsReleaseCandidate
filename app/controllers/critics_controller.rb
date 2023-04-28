@@ -21,8 +21,16 @@ class CriticsController < ApplicationController
 
   # POST /critics
   def create
-    @critic = Critic.new(critic_params)
-
+    if params[:game_id]
+      criticable = Game.find(params[:game_id])
+    elsif params[:company_id]
+      criticable = Company.find(params[:company_id])
+    end
+    
+    @critic = Critic.new(title: params[:title], body: params[:body])
+    @critic.criticable = criticable
+    # binding.pry
+    @critic.user_id = 1 
     if @critic.save
       redirect_to @critic, notice: "Critic was successfully created."
     else
@@ -53,6 +61,6 @@ class CriticsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def critic_params
-      params.require(:critic).permit(:title, :body, :user_id)
+      params.require(:critic).permit(:title, :body)
     end
 end

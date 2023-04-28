@@ -52,13 +52,13 @@
 </div>
 <h2>Add relations</h2>
 
-<%= form_with(url: critic_path, method:"post") do |form| %>
+<%= form_with(url: game_critics_path(params[:id]), method:"post") do |form| %>
   <div>
-    <%= form.text_field :company_id, placeholder: "Critic title" %>
+    <%= form.text_field :title, placeholder: "Critic title" %>
   </div>
 
   <div>
-    <%= form.text_field :company_id, placeholder: "Critic body" %>
+    <%= form.text_field :body, placeholder: "Critic body" %>
   </div>
 
    <div>
