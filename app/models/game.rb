@@ -6,7 +6,7 @@ class Game < ApplicationRecord
   has_and_belongs_to_many :platforms
   has_and_belongs_to_many :genres
   has_many :critics, as: :criticable, dependent: :destroy
- 
+
   enum category: { main_game: 0, expansion: 1 }
 
   validates :name, presence: true, uniqueness: true
@@ -19,12 +19,6 @@ class Game < ApplicationRecord
             }
 
   validate :validate_parent
-
-  has_many :expansions,
-           class_name: "Game",
-           foreign_key: "parent_id",
-           dependent: :destroy,
-           inverse_of: "parent"
 
   private
 
