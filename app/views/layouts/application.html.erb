@@ -15,6 +15,14 @@
        <%= image_tag("logo.png", style: "width: 60px;")%>
 
     </header>
+    <% if user_signed_in? %> 
+ <div> Welcome <%= current_user.email %> </div> 
+  <%= button_to "Sign out", destroy_user_session_path, method: :delete %> 
+<% else %>
+  <%= button_to "Sign in", new_user_session_path %> 
+   <%= button_to "create account", signup_path %> 
+<% end %>
+
      <p class="notice"><%= notice %></p>
        <p class="alert"><%= alert %></p>
     <%= yield %>

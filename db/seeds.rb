@@ -111,7 +111,7 @@ game = Game.first
 game_2 = Game.last
 company_2 = Company.last
 
-user_1 = User.create(username: "user1", email: "user1@mail.com")
+user_1 = User.create(username: "user1", email: "user1@mail.com",password:"qwerty",password_confirmation:"qwerty")
 user_2 = User.create(username: "user2", email: "user2@mail.com")
 
 Critic.create(title: "critic 1", body: "this is the first company critic", user_id: user_1, criticable: company)
