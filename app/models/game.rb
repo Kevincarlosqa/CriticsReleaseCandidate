@@ -20,6 +20,12 @@ class Game < ApplicationRecord
 
   validate :validate_parent
 
+  has_many :expansions,
+           class_name: "Game",
+           foreign_key: "parent_id",
+           dependent: :destroy,
+           inverse_of: "parent"
+
   private
 
   def validate_parent

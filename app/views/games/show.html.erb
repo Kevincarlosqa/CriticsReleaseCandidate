@@ -52,6 +52,18 @@
 </div>
 <h2>Add relations</h2>
 
+<div>
+   <%if @game.critics%>
+   <%@game.critics.each do |critic|%>
+   <%= critic.title %></p>
+   by <%= critic.user.username %></p>
+   <%= critic.body %></p>
+   <%# <% reference_time = Time.zone.now - 10.day %>
+   <% timestamp = critic.created_at%>
+   Send <%= time_ago_in_words(timestamp) %> ago</p>
+   <%end%>
+   <%end%>
+</div>
 
 <div>
   <%= link_to "Back", games_path %>
