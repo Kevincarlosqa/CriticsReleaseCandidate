@@ -22,8 +22,12 @@
    <div>
       <p>Genres:<% @game.genres.each do |genre| %>
       <div>
-       <%= genre.name %></p>
-       </div>
+       <%= button_to  genre_path(genre), method: :delete do %> 
+       <%= image_tag "delete_icon.png", alt: "Delete Genre" %>
+       <%= genre.name %>
+       <% end %>
+      </div>
+      </p>
       <%end%>
    </div>
    <%end%>
@@ -33,8 +37,12 @@
    <div>
       <p>Platforms:<% @game.platforms.each do |platform| %>
       <div>
-       <%= platform.name %></p>
-       </div>
+       <%= button_to  platform_path(platform), method: :delete do %> 
+       <%= image_tag "delete_icon.png", alt: "Delete Platform" %>
+       <%= platform.name %>
+       <% end %>
+      </div>
+      </p>
       <%end%>
    </div>
    <%end%>
@@ -44,8 +52,12 @@
    <div>
       <p>Developers:<% @game.companies.each do |company| %>
       <div>
-       <%= company.name %></p>
-       </div>
+      <%= button_to  company_path(company), method: :delete do %> 
+       <%= image_tag "delete_icon.png", alt: "Delete Developer" %>
+       <%= company.name %>
+       <% end %>
+      </div>
+      </p>
       <%end%>
    </div>
    <%end%>

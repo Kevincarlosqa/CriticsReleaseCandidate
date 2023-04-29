@@ -42,7 +42,7 @@ class PlatformsController < ApplicationController
   # DELETE /platforms/1
   def destroy
     @platform.destroy
-    redirect_to platforms_url, notice: "Platform was successfully destroyed."
+    redirect_to game_path(:game_id), notice: "Platform was successfully destroyed."
   end
 
   private
