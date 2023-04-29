@@ -50,11 +50,25 @@
 <div>
    <%if @game.companies%>
    <div>
-      <p>Developers:<% @game.companies.each do |company| %>
+      <p>Developers:<% @game.involved_companies.where(developer: true).each do |company| %>
       <div>
       <%= button_to  company_path(company), method: :delete do %> 
        <%= image_tag "delete_icon.png", alt: "Delete Developer" %>
-       <%= company.name %>
+       <%= Company.all.find(company.company_id).name %>
+       <% end %>
+      </div>
+      </p>
+      <%end%>
+   </div>
+   <%end%>
+
+   <%if @game.companies%>
+   <div>
+      <p>Publishers:<% @game.involved_companies.where(publisher: true).each do |company| %>
+      <div>
+      <%= button_to  company_path(company), method: :delete do %> 
+       <%= image_tag "delete_icon.png", alt: "Delete Developer" %>
+       <%= Company.all.find(company.company_id).name %>
        <% end %>
       </div>
       </p>
@@ -62,11 +76,13 @@
    </div>
    <%end%>
 </div>
+
 <h2>Add relations</h2>
+<% names = [] %>
 <%= form_with(url: genres_path, method: "post") do |form| %>
   <div>
-  <% options = Genre.all %>
-  <% options_for_select = options.map { |option| option.name } %>
+  <% options = Genre.all.each{ |option| names << option[:name] } %>
+  <% options_for_select = names.each{ |option| option } %>
     <%= form.select :name, options_for_select([["Select genre", nil]] + options_for_select) %>
     <%= form.hidden_field :game_id, value: @game.id %>
     <%= form.submit "Add genre" %>
@@ -87,17 +103,20 @@
   <div>
   <% options = Company.all %>
   <% options_for_select = options.map { |option| option.name } %>
+  <%= form.hidden_field :company, value: "developer" %>
     <%= form.select :name, options_for_select([["Select company", nil]] + options_for_select) %>
     <%= form.hidden_field :game_id, value: @game.id %>
     <%= form.submit "Add developer" %>
   </div>
 <% end %>
 
-<%= form_with(model: @company) do |form| %>
+<%= form_with(url: companies_path, method: "post") do |form| %>
   <div>
   <% options = Company.all %>
   <% options_for_select = options.map { |option| option.name } %>
+  <%= form.hidden_field :company, value: "publisher" %>
     <%= form.select :name, options_for_select([["Select company", nil]] + options_for_select) %>
+    <%= form.hidden_field :game_id, value: @game.id %>
     <%= form.submit "Add publisher" %>
   </div>
 <% end %>

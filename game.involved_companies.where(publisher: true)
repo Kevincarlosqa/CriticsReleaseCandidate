@@ -1,0 +1,11 @@
+=> [32m#<Game:0x00007f0089e5a340[0m
+ id: [1;34m1[0m,
+ name: [31m[1;31m"[0m[31mSuper Mario World[1;31m"[0m[31m[0m,
+ summary:
+  [31m[1;31m"[0m[31mA 2D platformer and first entry on the SNES in the Super Mario franchise, Super Mario World follows Mario as he attempts to defeat Bowser's underlings and rescue Princess Peach from his clutches. The game features a save system, a less linear world map, an expanded movement arsenal and numerous new items for Mario, alongside new approaches to level design and art direction.[1;31m"[0m[31m[0m,
+ release_date: [1;34;4mWed[0m, [1;34m21[0m [1;34;4mNov[0m [1;34m1990[0m,
+ category: [31m[1;31m"[0m[31mmain_game[1;31m"[0m[31m[0m,
+ rating: [1;35m0.964e2[0m,
+ parent_id: [1;36mnil[0m,
+ created_at: [1;34;4mSat[0m, [1;34m29[0m [1;34;4mApr[0m [1;34m2023[0m [1;34m21[0m:[1;34m08[0m:[1;35m14.742441000[0m [1;34;4mUTC[0m [1;34m+00[0m:[1;34m00[0m,
+ updated_at: [1;34;4mSat[0m, [1;34m29[0m [1;34;4mApr[0m [1;34m2023[0m [1;34m21[0m:[1;34m08[0m:[1;35m14.764254000[0m [1;34;4mUTC[0m [1;34m+00[0m:[1;34m00[0m[32m>[0m

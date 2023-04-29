@@ -22,9 +22,13 @@ class CompaniesController < ApplicationController
   # POST /companies
   def create
     game = Game.find(params[:game_id])
-    company = Company.find_by(name: params[:name])
-    binding.pry
-    game.companies.push(company)
+    if params[:company] == "developer"
+      company = Company.find_by(name: params[:name])
+      game.involved_companies.create(company_id: company.id, developer: true, publisher: false)
+    elsif params[:company] == "publisher"
+      company = Company.find_by(name: params[:name])
+      game.involved_companies.create(company_id: company.id, developer: false, publisher: true)
+    end
     redirect_to game_path(:game_id)
   end
 
