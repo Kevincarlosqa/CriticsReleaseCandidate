@@ -13,6 +13,16 @@
   <body>
     <header>
        <%= image_tag("logo.png", style: "width: 60px;")%>
+       <div>
+        <%= link_to "Edit User", edit_user_registration_path %>
+       </div>
+       <div>
+        <%= link_to "Games", games_path %>
+       </div>
+       <div>
+        <%= link_to "Companies", companies_path %>
+       </div>
+    
 
     </header>
     <% if user_signed_in? %> 
@@ -20,7 +30,7 @@
   <%= button_to "Sign out", destroy_user_session_path, method: :delete %> 
 <% else %>
   <%= button_to "Sign in", new_user_session_path %> 
-   <%= button_to "create account", signup_path %> 
+   <%# button_to "create account", new_user_path %> 
 <% end %>
 
      <p class="notice"><%= notice %></p>
