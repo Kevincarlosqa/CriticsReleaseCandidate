@@ -21,13 +21,10 @@ class PlatformsController < ApplicationController
 
   # POST /platforms
   def create
-    @platform = Platform.new(platform_params)
-
-    if @platform.save
-      redirect_to @platform, notice: "Platform was successfully created."
-    else
-      render :new, status: :unprocessable_entity
-    end
+    game = Game.find(params[:game_id])
+    platform = Platform.find_by(name: params[:name])
+    game.platforms.push(platform)
+    redirect_to game_path(:game_id)
   end
 
   # PATCH/PUT /platforms/1

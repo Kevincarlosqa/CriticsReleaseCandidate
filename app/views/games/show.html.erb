@@ -63,29 +63,32 @@
    <%end%>
 </div>
 <h2>Add relations</h2>
-<%= form_with(model: @genres) do |form| %>
+<%= form_with(url: genres_path, method: "post") do |form| %>
   <div>
   <% options = Genre.all %>
   <% options_for_select = options.map { |option| option.name } %>
     <%= form.select :name, options_for_select([["Select genre", nil]] + options_for_select) %>
+    <%= form.hidden_field :game_id, value: @game.id %>
     <%= form.submit "Add genre" %>
   </div>
 <% end %>
 
-<%= form_with(model: @platforms) do |form| %>
+<%= form_with(url: platforms_path, method: "post") do |form| %>
   <div>
   <% options = Platform.all %>
   <% options_for_select = options.map { |option| option.name } %>
     <%= form.select :name, options_for_select([["Select platform", nil]] + options_for_select) %>
+    <%= form.hidden_field :game_id, value: @game.id %>
     <%= form.submit "Add platform" %>
   </div>
 <% end %>
 
-<%= form_with(model: @company) do |form| %>
+<%= form_with(url: companies_path, method: "post") do |form| %>
   <div>
   <% options = Company.all %>
   <% options_for_select = options.map { |option| option.name } %>
     <%= form.select :name, options_for_select([["Select company", nil]] + options_for_select) %>
+    <%= form.hidden_field :game_id, value: @game.id %>
     <%= form.submit "Add developer" %>
   </div>
 <% end %>

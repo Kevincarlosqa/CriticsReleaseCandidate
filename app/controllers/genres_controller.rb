@@ -21,13 +21,10 @@ class GenresController < ApplicationController
 
   # POST /genres
   def create
-    @genre = Genre.new(genre_params)
-
-    if @genre.save
-      redirect_to @genre, notice: "Genre was successfully created."
-    else
-      render :new, status: :unprocessable_entity
-    end
+    game = Game.find(params[:game_id])
+    genre = Genre.find_by(name: params[:name])
+    game.genres.push(genre)
+    redirect_to game_path(:game_id)
   end
 
   # PATCH/PUT /genres/1

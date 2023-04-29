@@ -21,13 +21,11 @@ class CompaniesController < ApplicationController
 
   # POST /companies
   def create
-    @company = Company.new(company_params)
-
-    if @company.save
-      redirect_to @company, notice: "Company was successfully created."
-    else
-      render :new, status: :unprocessable_entity
-    end
+    game = Game.find(params[:game_id])
+    company = Company.find_by(name: params[:name])
+    binding.pry
+    game.companies.push(company)
+    redirect_to game_path(:game_id)
   end
 
   # PATCH/PUT /companies/1
