@@ -30,7 +30,7 @@ class CriticsController < ApplicationController
     @critic = Critic.new(title: params[:title], body: params[:body])
     @critic.criticable = criticable
     # binding.pry
-    @critic.user_id = 1 
+    @critic.user_id = current_user.id 
     if @critic.save
       redirect_to @critic, notice: "Critic was successfully created."
     else
