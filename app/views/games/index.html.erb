@@ -1,13 +1,13 @@
 <p style="color: green"><%= notice %></p>
-
+<div class="container mx-auto pt-5">
 <h1>Games</h1>
  <%= link_to 'New game', new_game_path %>
  <hr>
  <br>
 
-<div id="games">
+<div id="games" >
   <% @games.each do |game| %>
-          <div>
+          <div class="max-w-3xl mx-auto mt-16 text-center rounded overflow-hidden shadow-lg p-10">
             <div>
                <%if game.image.attached?%>
                <div>
@@ -29,7 +29,8 @@
             <%= link_to 'Edit', edit_game_path(game) %>
             <%= link_to 'Destroy', game, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
           </div>
-           <hr>
- <br>
+           <br>
         <% end %>
+
+</div>
 </div>
