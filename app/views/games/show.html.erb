@@ -85,7 +85,7 @@
   <div>
   <% options = Company.all %>
   <% options_for_select = options.map { |option| option.name } %>
-    <%= form.select :name, options_for_select([["Select Developer", nil]] + options_for_select) %>
+    <%= form.select :name, options_for_select([["Select company", nil]] + options_for_select) %>
     <%= form.submit "Add developer" %>
   </div>
 <% end %>
@@ -94,7 +94,7 @@
   <div>
   <% options = Company.all %>
   <% options_for_select = options.map { |option| option.name } %>
-    <%= form.select :name, options_for_select([["Select Developer", nil]] + options_for_select) %>
+    <%= form.select :name, options_for_select([["Select company", nil]] + options_for_select) %>
     <%= form.submit "Add publisher" %>
   </div>
 <% end %>
