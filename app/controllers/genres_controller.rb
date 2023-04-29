@@ -42,7 +42,7 @@ class GenresController < ApplicationController
   # DELETE /genres/1
   def destroy
     @genre.destroy
-    redirect_to genres_url, notice: "Genre was successfully destroyed."
+    redirect_to game_path(:game_id), notice: "Genre was successfully destroyed."
   end
 
   private
