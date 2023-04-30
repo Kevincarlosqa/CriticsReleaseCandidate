@@ -1,3 +1,4 @@
+<div class="mx-auto">
 <%= form_with(model: company) do |form| %>
   <% if company.errors.any? %>
     <div style="color: red">
@@ -12,35 +13,35 @@
   <% end %>
 
   <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+    <%= form.label :name, class:"block text-gray-700 text-xl font-bold mb-2" %>
+    <%= form.text_field :name,class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
   </div>
 
   <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_area :description %>
+    <%= form.label :description,  class:"block text-gray-700 text-xl font-bold mb-2" %>
+    <%= form.text_area :description, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
   </div>
 
   <div>
-    <%= form.label :start_date, style: "display: block" %>
-    <%= form.date_field :start_date %>
+    <%= form.label :start_date, class:"block text-gray-700 text-xl font-bold mb-2" %>
+    <%= form.date_field :start_date, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
   </div>
 
   <div>
-    <%= form.label :country, style: "display: block" %>
-    <%= form.text_field :country %>
+    <%= form.label :country, class:"block text-gray-700 text-xl font-bold mb-2" %>
+    <%= form.text_field :country, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
   </div>
 
-  <div>
+  <div >
   <%if company.cover.attached?%>
-  <%= image_tag company.cover %>
+  <%= image_tag company.cover ,class:"object-contain h-60 w-100"%>
    <%end%>
   </div>
 
   <div>
   <%= form.label :cover %>
   <br>
-  <%= form.file_field :cover, accept: 'image/png,image/jpeg'%>
+  <%= form.file_field :cover, accept: 'image/png,image/jpeg',class:"w-100" %>
   <% company.errors.full_messages_for(:cover).each do |message|%>
   <span>
   <%= message%>
@@ -49,8 +50,8 @@
 </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit class:"bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
   </div>
 <% end %>
-
+</div>
 
