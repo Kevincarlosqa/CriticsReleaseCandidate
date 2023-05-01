@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
-
+  enum :role, { regular: 0, admin: 1 }
   def self.from_omniauth(auth_hash)
     
     where(provider: auth_hash.provider, uid: auth_hash.uid).first_or_create do |user|

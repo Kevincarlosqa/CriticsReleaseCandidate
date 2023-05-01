@@ -4,10 +4,12 @@ class CompaniesController < ApplicationController
   # GET /companies
   def index
     @companies = Company.all
+    authorize @companies
   end
 
   # GET /companies/1
   def show
+    
   end
 
   # GET /companies/new

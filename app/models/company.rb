@@ -6,4 +6,5 @@ class Company < ApplicationRecord
   has_many :critics, as: :criticable, dependent: :destroy
 
   validates :name, presence: true, uniqueness: true
+  
 end
