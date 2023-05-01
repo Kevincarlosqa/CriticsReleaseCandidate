@@ -15,10 +15,12 @@ class GamesController < ApplicationController
   # GET /games/new
   def new
     @game = Game.new
+    authorize @game
   end
 
   # GET /games/1/edit
   def edit
+    authorize @game
   end
 
   # POST /games
@@ -44,6 +46,7 @@ class GamesController < ApplicationController
   # DELETE /games/1
   def destroy
     @game.destroy
+    authorize @game
     redirect_to games_url, notice: "Game was successfully destroyed."
   end
 

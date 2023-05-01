@@ -1,9 +1,12 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>Companies</h1>
+<% if current_user.admin? %>
  <%= link_to 'New Company', new_company_path %>
+ <% end %>
 <div id="games">
   <% @companies.each do |company| %>
+  <%= link_to company do%>
           <div>
             <div>
                <%if company.cover.attached?%>
@@ -24,9 +27,12 @@
             </div>
             <p><%= company.description %></p>
             <p><%= company.games.size %></p>
-            <%= link_to 'Show', company %>
+            
+            <% if current_user.admin? %>
             <%= link_to 'Edit', edit_company_path(company) %>
             <%= link_to 'Destroy', company, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+            <% end %>
           </div>
         <% end %>
+   <%end%>
 </div>

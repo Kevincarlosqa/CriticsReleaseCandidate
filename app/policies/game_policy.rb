@@ -1,13 +1,9 @@
-class CompanyPolicy < ApplicationPolicy
+class GamePolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     def resolve
       scope.all
     end
-  end
-  
-  def index?
-    user.admin?
   end
 
   def edit?
@@ -21,11 +17,4 @@ class CompanyPolicy < ApplicationPolicy
   def destroy?
     user.admin?
   end
-
-  # def show?
-  #   user.admin?
-  # end
-
-  
-  
 end

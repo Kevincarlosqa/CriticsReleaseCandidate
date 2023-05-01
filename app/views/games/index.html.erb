@@ -1,13 +1,16 @@
 <p style="color: green"><%= notice %></p>
 <div class="container mx-auto pt-5">
 <h1 class="text-5xl ">Games</h1>
+<% if current_user.admin? %>
  <%= link_to 'New game', new_game_path %>
+ <% end %>
  <hr>
  <br>
 
 <div id="games" >
   <% @games.each do |game| %>
-          <div class="flex flex-col mx-auto mt-16 text-center rounded overflow-hidden shadow-lg p-10 md:max-w-4xl md:flex-row">
+  <%= link_to game do%>
+          <div class="flex flex-col mx-auto mt-1 text-center rounded overflow-hidden shadow-lg p-10 md:max-w-4xl md:flex-row">
             <div>
                <%if game.image.attached?%>
                <div class="h-96 w-full rounded-t-lg object-cover md:h-auto md:w-48 md:rounded-none md:rounded-l-lg">
@@ -26,13 +29,16 @@
             </div>
             <p><%= game.rating %></p>
             <p><%= game.summary %></p>
-            <%= link_to 'Show', game %>
+            
+            <% if current_user.admin? %>
             <%= link_to 'Edit', edit_game_path(game) %>
             <%= link_to 'Destroy', game, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+            <% end %>
           </div>
           </div>
            <br>
         <% end %>
+   <%end%>
 
         
 

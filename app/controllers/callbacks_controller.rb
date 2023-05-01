@@ -4,6 +4,11 @@ class CallbacksController < Devise::OmniauthCallbacksController
     sign_in_and_redirect @user
   end
 
+  def twitter2
+    @user = User.from_omniauth(auth_hash)
+    sign_in_and_redirect @user
+  end
+
   private
 
   def auth_hash

@@ -20,4 +20,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+
+  get '/auth/:twitter2/callback', to: 'sessions#create'
 end

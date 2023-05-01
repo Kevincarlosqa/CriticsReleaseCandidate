@@ -4,7 +4,6 @@ class CompaniesController < ApplicationController
   # GET /companies
   def index
     @companies = Company.all
-    authorize @companies
   end
 
   # GET /companies/1
@@ -15,10 +14,12 @@ class CompaniesController < ApplicationController
   # GET /companies/new
   def new
     @company = Company.new
+    authorize @company
   end
 
   # GET /companies/1/edit
   def edit
+    authorize @company
   end
 
   # POST /companies
@@ -46,6 +47,7 @@ class CompaniesController < ApplicationController
   # DELETE /companies/1
   def destroy
     @company.destroy
+    authorize @company
     redirect_to game_path(:game_id), notice: "Company was successfully destroyed."
   end
 
